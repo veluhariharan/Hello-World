@@ -7,24 +7,23 @@ of a target integer.
 
 from __future__ import annotations
 
-from typing import Iterable, List, Optional, Tuple
+from typing import Sequence, Optional, Tuple
 
 
-def binary_search_first(numbers: Iterable[int], target: int) -> Optional[int]:
+def binary_search_first(numbers: Sequence[int], target: int) -> Optional[int]:
     """Return the first index of target in a sorted integer sequence.
 
     If the target is not found, return None.
     """
-    nums = list(numbers)
     low = 0
-    high = len(nums) - 1
+    high = len(numbers) - 1
     result: Optional[int] = None
 
     while low <= high:
         mid = (low + high) // 2
-        if nums[mid] < target:
+        if numbers[mid] < target:
             low = mid + 1
-        elif nums[mid] > target:
+        elif numbers[mid] > target:
             high = mid - 1
         else:
             result = mid
@@ -33,21 +32,20 @@ def binary_search_first(numbers: Iterable[int], target: int) -> Optional[int]:
     return result
 
 
-def binary_search_last(numbers: Iterable[int], target: int) -> Optional[int]:
+def binary_search_last(numbers: Sequence[int], target: int) -> Optional[int]:
     """Return the last index of target in a sorted integer sequence.
 
     If the target is not found, return None.
     """
-    nums = list(numbers)
     low = 0
-    high = len(nums) - 1
+    high = len(numbers) - 1
     result: Optional[int] = None
 
     while low <= high:
         mid = (low + high) // 2
-        if nums[mid] < target:
+        if numbers[mid] < target:
             low = mid + 1
-        elif nums[mid] > target:
+        elif numbers[mid] > target:
             high = mid - 1
         else:
             result = mid
@@ -56,7 +54,7 @@ def binary_search_last(numbers: Iterable[int], target: int) -> Optional[int]:
     return result
 
 
-def binary_search_range(numbers: Iterable[int], target: int) -> Tuple[Optional[int], Optional[int]]:
+def binary_search_range(numbers: Sequence[int], target: int) -> Tuple[Optional[int], Optional[int]]:
     """Return the first and last indices of target in a sorted integer sequence.
 
     If the target is not found, both values are None.
@@ -68,20 +66,19 @@ def binary_search_range(numbers: Iterable[int], target: int) -> Tuple[Optional[i
     return first_index, last_index
 
 
-def binary_search_any(numbers: Iterable[int], target: int) -> Optional[int]:
+def binary_search_any(numbers: Sequence[int], target: int) -> Optional[int]:
     """Return any index of target in a sorted integer sequence.
 
     This is useful when any matching index is sufficient.
     """
-    nums = list(numbers)
     low = 0
-    high = len(nums) - 1
+    high = len(numbers) - 1
 
     while low <= high:
         mid = (low + high) // 2
-        if nums[mid] < target:
+        if numbers[mid] < target:
             low = mid + 1
-        elif nums[mid] > target:
+        elif numbers[mid] > target:
             high = mid - 1
         else:
             return mid
